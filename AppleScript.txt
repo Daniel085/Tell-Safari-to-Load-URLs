@@ -2,26 +2,4 @@ This file contains the code for the Apple Script.
 It doesn’t run on it’s own, but merely documents how we accomplish the task.
 
 
-on run {input, parameters}  
-     read (item 1 of input)  
-     set ps to paragraphs of the result  
-     set tot to count ps  
-     tell application "Safari"  
-          reopen  
-          activate  
-     end tell  
-     repeat with i from 1 to tot  
-          set p to item i of ps  
-          if p is not "" then  
-               try  
-                    tell application "Safari"  
-                         tell front window  
-                              set r to make new tab with properties {URL:p}  
-                              set current tab to r  
-                              delay 5  
-                         end tell  
-                    end tell  
-               end try  
-          end if  
-     end repeat  
-end run  
+on run {input, parameters}	read (item 1 of input)	set ps to paragraphs of the result	set tot to count ps	tell application "Safari"		reopen		activate	end tell	repeat with i from 1 to tot		set p to item i of ps		if p is not "" then			try				tell application "Safari"					tell front window						set r to make new tab with properties {URL:p}						set current tab to r						delay 5						close current tab					end tell				end tell			end try		end if	end repeatend run
